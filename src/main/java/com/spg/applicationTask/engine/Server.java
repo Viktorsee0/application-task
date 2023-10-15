@@ -1,7 +1,7 @@
 package com.spg.applicationTask.engine;
 
 
-import com.spg.applicationTask.annotation.Value;
+import com.spg.applicationTask.propertyAPI.Value;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -15,6 +15,7 @@ import static com.spg.applicationTask.Constants.CREATE_CONSTANT_CLASS_ERROR;
 import static com.spg.applicationTask.Constants.Messages.SERVER_STARTED;
 import static com.spg.applicationTask.Constants.Messages.SERVER_STOPPED;
 import static com.spg.applicationTask.engine.Server.Settings.*;
+
 
 public final class Server implements WebServer {
 

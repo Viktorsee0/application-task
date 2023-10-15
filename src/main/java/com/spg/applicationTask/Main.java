@@ -1,12 +1,14 @@
 package com.spg.applicationTask;
 
+import com.spg.applicationTask.propertyAPI.Value;
 import com.spg.applicationTask.controller.JustController;
 import com.spg.applicationTask.engine.ServerConfig;
 
 import java.io.IOException;
 
 public class Main {
-
+    @Value("db.url")
+    public String url;
     ConnectionPool pool;
     public static void main(String[] args) throws IOException {
 

@@ -11,10 +11,21 @@
   <properties>
     <json.simple.version>4.0.1</json.simple.version>
     <postgresql.version>42.6.0</postgresql.version>
-    <reflections.version>0.9.12</reflections.version>
+    <reflections.version>0.9.11</reflections.version>
   </properties>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.5</version> <!-- Укажите актуальную версию -->
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.14.0</version> <!-- Укажите актуальную версию -->
+    </dependency>
 
     <dependency>
       <groupId>com.github.cliftonlabs</groupId>
@@ -32,7 +43,6 @@
       <groupId>org.reflections</groupId>
       <artifactId>reflections</artifactId>
       <version>0.10.2</version>
-
     </dependency>
 
     <dependency>
@@ -49,8 +59,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>10</source>
-          <target>10</target>
+          <source>16</source>
+          <target>16</target>
         </configuration>
       </plugin>
       <plugin>

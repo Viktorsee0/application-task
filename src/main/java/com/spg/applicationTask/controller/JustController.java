@@ -1,8 +1,8 @@
 package com.spg.applicationTask.controller;
 
-import com.spg.applicationTask.annotation.Value;
 import com.spg.applicationTask.engine.AbstractController;
 import com.spg.applicationTask.engine.OperationResponse;
+import com.spg.applicationTask.engine.annotation.RestServlet;
 import com.spg.applicationTask.engine.exception.MethodNotAllowedException;
 import com.sun.net.httpserver.HttpExchange;
 
@@ -14,7 +14,10 @@ import static com.spg.applicationTask.engine.ServerConstants.Method.GET;
 import com.spg.applicationTask.Constants.Messages;
 import static java.net.HttpURLConnection.HTTP_BAD_METHOD;
 
-public final class JustController extends AbstractController {
+@RestServlet(url = "/123")
+public final class JustController  extends AbstractController{
+
+    private String url;
 
     private final static Logger LOGGER = Logger.getLogger(JustController.class.getSimpleName());
 

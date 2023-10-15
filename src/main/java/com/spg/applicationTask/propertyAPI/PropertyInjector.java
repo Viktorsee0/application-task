@@ -1,4 +1,4 @@
-package com.spg.applicationTask.annotation;
+package com.spg.applicationTask.propertyAPI;
 
 import com.spg.applicationTask.extension.PropertiesUtil;
 
@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.Properties;
 
-public class PropertyInjector {
+class PropertyInjector {
 
     private static final Properties PROPERTIES = new Properties();
     private static final String PATH_APPLICATION_PROPERTIES = "application.properties";

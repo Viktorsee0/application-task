@@ -1,4 +1,4 @@
-package com.spg.applicationTask.annotation;
+package com.spg.applicationTask.propertyAPI;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
