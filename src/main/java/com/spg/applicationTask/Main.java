@@ -1,31 +1,40 @@
 package com.spg.applicationTask;
 
-import com.spg.applicationTask.propertyAPI.Value;
-import com.spg.applicationTask.controller.JustController;
-import com.spg.applicationTask.engine.ServerConfig;
+import com.spg.applicationTask.api.controller.ProjectController;
+import com.spg.applicationTask.api.controller.TaskController;
+import com.spg.applicationTask.api.controller.UserController;
+import com.spg.applicationTask.engine.IoC.Application;
+import com.spg.applicationTask.engine.IoC.ApplicationContext;
+import com.spg.applicationTask.engine.web.AbstractController;
+import com.spg.applicationTask.engine.web.Server;
 
-import java.io.IOException;
+import java.util.Scanner;
+
 
 public class Main {
-    @Value("db.url")
-    public String url;
-    ConnectionPool pool;
-    public static void main(String[] args) throws IOException {
 
-//        Connection connection = ConnectionPool.INSTANCE.getConnection();
-//
-//        Server server = new Server(metaConfig());
-//        server.start();
-//
-//        while (true) {
-//
-//        }
-    }
+    public static void main(String[] args) {
 
-    public static ServerConfig metaConfig() {
+        ApplicationContext context = Application.run(Main.class);
 
-        return new ServerConfig.Builder()
-                .controller(new JustController.Builder("/1").build())
-                .build();
+        Server server = context.getObject(Server.class);
+        AbstractController projectController = context.getObject(ProjectController.class);
+        AbstractController userController = context.getObject(UserController.class);
+        AbstractController taskController = context.getObject(TaskController.class);
+
+        server.addControllers(projectController, userController, taskController);
+        server.start();
+
+        System.out.println("To terminate the program press: q/Q ");
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            if ("q".equalsIgnoreCase(scanner.next())) {
+                System.out.print("Termination of the program...");
+                server.stop();
+                return;
+            } else {
+                System.out.print("To terminate the program press: q/Q: ");
+            }
+        }
     }
 }

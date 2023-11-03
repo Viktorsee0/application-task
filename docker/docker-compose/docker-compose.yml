@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./SQL/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./SQL/insert.sql:/docker-entrypoint-initdb.d/insert.sql
+    ports:
+      - "5432:5432"
+
+  app:
+    container_name: application
+    image: viktorsee0/application:1.0
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - "8000:8000"
