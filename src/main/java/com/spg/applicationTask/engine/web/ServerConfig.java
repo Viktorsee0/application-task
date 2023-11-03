@@ -1,6 +1,6 @@
 package com.spg.applicationTask.engine.web;
 
-import com.spg.applicationTask.api.utils.Validator;
+import com.spg.applicationTask.engine.extension.Validator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,10 +14,8 @@ public final class ServerConfig {
         this.properties = Map.copyOf(builder.properties);
     }
 
-    public void add(Property p, String value) {
-        HashMap<Property, String> map = new HashMap<>(properties);
-        map.put(p, value);
-        this.properties = map;
+    public void setProperties(Map<Property, String> properties) {
+        this.properties = properties;
     }
 
     public Optional<String> getProperty(Property p) {

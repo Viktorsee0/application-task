@@ -2,8 +2,8 @@ package com.spg.applicationTask.api.dto;
 
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
-import com.spg.applicationTask.api.utils.ExtJsonable;
-import com.spg.applicationTask.api.utils.Validator;
+import com.spg.applicationTask.engine.extension.ExtJsonable;
+import com.spg.applicationTask.engine.extension.Validator;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static com.spg.applicationTask.api.utils.JsonUtils.getInt;
+import static com.spg.applicationTask.engine.extension.JsonUtils.getInt;
 
 public class ProjectDTO implements ExtJsonable {
 

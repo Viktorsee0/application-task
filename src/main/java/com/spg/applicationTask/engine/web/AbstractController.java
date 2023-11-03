@@ -23,11 +23,11 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.spg.applicationTask.engine.Constants.Messages.JSON_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.METHOD_NOT_ALLOWED;
-import static com.spg.applicationTask.engine.Constants.Messages.METHOD_NOT_IMPLEMENTED;
-import static com.spg.applicationTask.api.utils.JsonUtils.toJson;
-import static com.spg.applicationTask.engine.web.ServerConstants.Header.APPLICATION_JSON;
+import static com.spg.applicationTask.engine.extension.JsonUtils.toJson;
+import static com.spg.applicationTask.engine.web.WebConstants.Header.APPLICATION_JSON;
+import static com.spg.applicationTask.engine.web.WebConstants.Messages.JSON_ERROR;
+import static com.spg.applicationTask.engine.web.WebConstants.Messages.METHOD_NOT_ALLOWED;
+import static com.spg.applicationTask.engine.web.WebConstants.Messages.METHOD_NOT_IMPLEMENTED;
 import static java.net.HttpURLConnection.HTTP_BAD_METHOD;
 import static java.net.HttpURLConnection.HTTP_BAD_REQUEST;
 import static java.net.HttpURLConnection.HTTP_INTERNAL_ERROR;

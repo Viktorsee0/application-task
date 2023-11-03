@@ -3,9 +3,9 @@ package com.spg.applicationTask.api.utils;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import static com.spg.applicationTask.engine.Constants.Messages.DB_CONNECTION_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.DB_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.DB_ROLLBACK_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.DB_CONNECTION_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.DB_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.DB_ROLLBACK_ERROR;
 
 
 public class JDBCUtils {

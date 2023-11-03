@@ -2,13 +2,13 @@ package com.spg.applicationTask.engine.web;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsonable;
-import com.spg.applicationTask.api.utils.Validator;
+import com.spg.applicationTask.engine.extension.Validator;
 
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 
-import static com.spg.applicationTask.engine.Constants.Messages.STRING_TO_JSON_ERROR;
+import static com.spg.applicationTask.engine.web.WebConstants.Messages.STRING_TO_JSON_ERROR;
 
 /**
  * The operation response model that contains a result, an error message and a flag of success.
@@ -41,9 +41,6 @@ public final class ErrorResponse implements Jsonable {
         return rCode;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String toJson() {
         final StringWriter writable = new StringWriter();
@@ -56,9 +53,6 @@ public final class ErrorResponse implements Jsonable {
         return writable.toString();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void toJson(final Writer writer) throws IOException {
         final JsonObject json = new JsonObject();
@@ -67,9 +61,6 @@ public final class ErrorResponse implements Jsonable {
         json.toJson(writer);
     }
 
-    /**
-     * Wraps and builds the instance of the operation response model.
-     */
     public final static class Builder {
 
         private int rCode;

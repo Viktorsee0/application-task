@@ -7,11 +7,11 @@ import com.spg.applicationTask.api.repository.TaskRepository;
 import com.spg.applicationTask.api.service.TaskService;
 import com.spg.applicationTask.engine.IoC.annotation.Component;
 import com.spg.applicationTask.engine.IoC.annotation.Inject;
-import com.spg.applicationTask.api.utils.Validator;
+import com.spg.applicationTask.engine.extension.Validator;
 
 import java.util.List;
 
-import static com.spg.applicationTask.engine.Constants.Messages.EXISTING_TASK_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.EXISTING_TASK_ERROR;
 
 @Component
 public class TaskServiceImpl implements TaskService {

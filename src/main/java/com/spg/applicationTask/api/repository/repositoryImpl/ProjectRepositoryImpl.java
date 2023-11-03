@@ -25,9 +25,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.spg.applicationTask.engine.Constants.Messages.DELETE_PROJECT_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.RECEIVED_PROJECT_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.SAVE_PROJECTS_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.DELETE_PROJECT_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.RECEIVED_PROJECT_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.SAVE_PROJECTS_ERROR;
 
 @Component
 public class ProjectRepositoryImpl implements ProjectRepository {

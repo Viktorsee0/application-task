@@ -21,7 +21,7 @@ import java.util.List;
 
 import static com.spg.applicationTask.api.TestContainer.context;
 import static com.spg.applicationTask.api.TestContainer.getContainer;
-import static com.spg.applicationTask.api.utils.JsonUtils.toJson;
+import static com.spg.applicationTask.engine.extension.JsonUtils.toJson;
 import static com.spg.applicationTask.engine.web.HttpMethod.*;
 import static com.spg.applicationTask.engine.web.HttpMethod.DELETE;
 import static org.assertj.core.api.Assertions.assertThat;

@@ -7,12 +7,12 @@ import com.spg.applicationTask.engine.IoC.annotation.Component;
 import com.spg.applicationTask.api.model.User;
 import com.spg.applicationTask.api.repository.UserRepository;
 import com.spg.applicationTask.api.service.UserService;
-import com.spg.applicationTask.api.utils.Validator;
+import com.spg.applicationTask.engine.extension.Validator;
 import com.spg.applicationTask.engine.web.exception.ElementDoseNotExistException;
 
 import java.util.List;
 
-import static com.spg.applicationTask.engine.Constants.Messages.EXISTING_USER_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.EXISTING_USER_ERROR;
 
 @Component
 public class UserServiceImpl implements UserService {

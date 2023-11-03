@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.spg.applicationTask.engine.Constants.Messages.JSON_ERROR;
+import static com.spg.applicationTask.engine.web.WebConstants.Messages.JSON_ERROR;
 import static java.net.HttpURLConnection.HTTP_BAD_REQUEST;
 
 public final class WebClient<T> {

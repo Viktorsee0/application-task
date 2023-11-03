@@ -2,11 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.spg.applicationTask</groupId>
-    <artifactId>application</artifactId>
+    <artifactId>application-task</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>application</name>
-    <url>http://maven.apache.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
@@ -14,15 +13,11 @@
         <maven.clean.plugin>3.1.0</maven.clean.plugin>
         <maven.jar.plugin>3.2.0</maven.jar.plugin>
         <maven.assembly.plugin>3.3.0</maven.assembly.plugin>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
         <maven.dependency.plugin>3.2.0</maven.dependency.plugin>
         <json.simple.version>4.0.1</json.simple.version>
         <postgresql.version>42.6.0</postgresql.version>
         <reflections.version>0.10.2</reflections.version>
-        <cglib.version>3.3.0</cglib.version>
         <annotation.version>1.0</annotation.version>
-        <lombok.version>1.18.30</lombok.version>
         <reflections.version>0.10.2</reflections.version>
         <log4j-core.version>2.20.0</log4j-core.version>
         <log4j-api.version>2.20.0</log4j-api.version>
@@ -107,11 +102,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.plugin}</version>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>${maven.surefire.plugin}</version>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>

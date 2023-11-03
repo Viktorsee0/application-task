@@ -11,10 +11,13 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
 import static com.spg.applicationTask.api.TestContainer.InitDB.createDb;
 import static com.spg.applicationTask.api.TestContainer.InitDB.destroyDb;
+import static com.spg.applicationTask.api.TestContainer.InitDB.insertDb;
 import static com.spg.applicationTask.engine.web.ServerConfig.Property.HOST;
+import static com.spg.applicationTask.engine.web.ServerConfig.Property.PORT;
 
 public class TestContainer extends PostgreSQLContainer<TestContainer> {
 
@@ -31,10 +34,19 @@ public class TestContainer extends PostgreSQLContainer<TestContainer> {
         context = Application.run(Main.class);
         HikariDataSource dataSource = (HikariDataSource) context.getObject(DataSource.class);
         ServerConfig serverConfig = context.getObject(ServerConfig.class);
-        serverConfig.add(HOST, "localhost");
-        dataSource.setJdbcUrl(container.getJdbcUrl());
-        dataSource.addDataSourceProperty("user", container.getUsername());
-        dataSource.addDataSourceProperty("password", container.getPassword());
+        setServerSettings(serverConfig);
+        setDataBaseSettings(dataSource);
+        initDB(dataSource);
+    }
+
+    public static TestContainer getContainer() {
+        if (container == null) {
+            container = new TestContainer();
+        }
+        return container;
+    }
+
+    private void initDB(DataSource dataSource) {
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             connection.setAutoCommit(false);
@@ -47,11 +59,14 @@ public class TestContainer extends PostgreSQLContainer<TestContainer> {
         }
     }
 
-    public static TestContainer getContainer() {
-        if (container == null) {
-            container = new TestContainer();
-        }
-        return container;
+    private void setDataBaseSettings(HikariDataSource dataSource) {
+        dataSource.setJdbcUrl(container.getJdbcUrl());
+        dataSource.addDataSourceProperty("user", container.getUsername());
+        dataSource.addDataSourceProperty("password", container.getPassword());
+    }
+
+    private void setServerSettings(ServerConfig serverConfig) {
+        serverConfig.setProperties(Map.of(HOST, "localhost", PORT, "8000"));
     }
 
     static class InitDB {
@@ -84,9 +99,8 @@ public class TestContainer extends PostgreSQLContainer<TestContainer> {
                 STATUS VARCHAR NOT NULL,
                 ASSIGNEE_ID INTEGER REFERENCES USERS (ID) ON DELETE SET NULL,
                 PROJECT_ID INTEGER REFERENCES PROJECTS (ID) ON DELETE CASCADE);""";
-    }
 
-    public static final String insertDb ="""
+        public static final String insertDb = """
             INSERT INTO PROJECTS (NAME, DESCRIPTION) VALUES
                     ('PROJECT1', 'PROJECT1'),
                     ('PROJECT2', 'PROJECT2'),
@@ -107,4 +121,6 @@ public class TestContainer extends PostgreSQLContainer<TestContainer> {
                     ('TASK2', 'create 2', '2023-10-19 13:52:29.697271 +00:00', '2023-10-19 13:52:29.697271 +00:00', 'IN PROGRESS', 2, 1),
                     ('TASK3', 'create 3', '2023-10-19 13:52:29.697271 +00:00', '2023-10-19 13:52:29.697271 +00:00', 'IN PROGRESS', 3, 1),
                     ('TASK4', 'create 4', '2023-10-19 13:52:29.697271 +00:00', '2023-10-19 13:52:29.697271 +00:00', 'IN PROGRESS', null,2);""";
+
+    }
 }

@@ -1,11 +1,11 @@
-package com.spg.applicationTask.api.utils;
+package com.spg.applicationTask.engine.extension;
 
 import com.github.cliftonlabs.json_simple.Jsonable;
 
 import java.io.IOException;
 import java.io.StringWriter;
 
-import static com.spg.applicationTask.engine.Constants.Messages.STRING_TO_JSON_ERROR;
+import static com.spg.applicationTask.engine.web.WebConstants.Messages.STRING_TO_JSON_ERROR;
 
 public interface ExtJsonable extends Jsonable {
 

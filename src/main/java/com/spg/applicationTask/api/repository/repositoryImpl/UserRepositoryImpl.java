@@ -24,10 +24,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.spg.applicationTask.engine.Constants.Messages.DELETE_USER_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.RECEIVED_USER_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.SAVE_USERS_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.UPDATE_USERS_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.DELETE_USER_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.RECEIVED_USER_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.SAVE_USERS_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.UPDATE_USERS_ERROR;
 
 @Component
 public class UserRepositoryImpl implements UserRepository {

@@ -20,9 +20,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import static com.spg.applicationTask.engine.Constants.Messages.DELETE_TASK_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.SAVE_TASKS_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.UPDATE_TASKS_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.DELETE_TASK_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.SAVE_TASKS_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.UPDATE_TASKS_ERROR;
 
 @Component
 public class TaskRepositoryImpl implements TaskRepository {

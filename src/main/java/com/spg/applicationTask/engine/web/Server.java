@@ -12,12 +12,11 @@ import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.spg.applicationTask.engine.Constants.CREATE_CONSTANT_CLASS_ERROR;
-import static com.spg.applicationTask.engine.Constants.Messages.SERVER_STARTED;
-import static com.spg.applicationTask.engine.Constants.Messages.SERVER_STOPPED;
 import static com.spg.applicationTask.engine.web.Server.Settings.BACKLOG_VALUE;
 import static com.spg.applicationTask.engine.web.Server.Settings.HOSTNAME_VALUE;
 import static com.spg.applicationTask.engine.web.Server.Settings.PORT_VALUE;
+import static com.spg.applicationTask.engine.web.WebConstants.Messages.SERVER_STARTED;
+import static com.spg.applicationTask.engine.web.WebConstants.Messages.SERVER_STOPPED;
 
 public final class Server implements WebServer {
 
@@ -68,11 +67,12 @@ public final class Server implements WebServer {
     public final static class Settings {
 
         private Settings() {
-            throw new AssertionError(CREATE_CONSTANT_CLASS_ERROR);
+
         }
 
         static final String HOSTNAME_VALUE = "localhost";
         static final int PORT_VALUE = 8000;
         static final int BACKLOG_VALUE = 0;
     }
+
 }

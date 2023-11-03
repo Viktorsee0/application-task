@@ -7,12 +7,12 @@ import com.spg.applicationTask.engine.IoC.annotation.Component;
 import com.spg.applicationTask.api.model.Project;
 import com.spg.applicationTask.api.repository.ProjectRepository;
 import com.spg.applicationTask.api.service.ProjectService;
-import com.spg.applicationTask.api.utils.Validator;
+import com.spg.applicationTask.engine.extension.Validator;
 import com.spg.applicationTask.engine.web.exception.ElementDoseNotExistException;
 
 import java.util.List;
 
-import static com.spg.applicationTask.engine.Constants.Messages.EXISTING_PROJECT_ERROR;
+import static com.spg.applicationTask.api.Constants.Messages.EXISTING_PROJECT_ERROR;
 
 @Component
 public class ProjectServiceImpl implements ProjectService {
