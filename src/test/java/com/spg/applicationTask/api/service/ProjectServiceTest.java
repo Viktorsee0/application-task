@@ -6,7 +6,7 @@ import com.spg.applicationTask.api.mapper.ProjectMapper;
 import com.spg.applicationTask.api.model.Project;
 import com.spg.applicationTask.api.repository.ProjectRepository;
 import com.spg.applicationTask.engine.IoC.Application;
-import com.spg.applicationTask.engine.web.exception.ElementDoseNotExistException;
+import com.spg.applicationTask.engine.web.exception.ElementDoesNotExistException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,7 +28,6 @@ public class ProjectServiceTest {
 
     private static ProjectRepository repository;
     private static ArgumentCaptor<Integer> integerArgumentCaptor;
-    @InjectMocks
     private static ProjectService service;
     private static ProjectMapper mapper;
     private static Optional<Project> optionalProject;
@@ -54,7 +53,7 @@ public class ProjectServiceTest {
         doReturn(Optional.empty())
                 .when(repository).getProject(anyInt());
         assertThatThrownBy(() -> service.getProject(1))
-                .isInstanceOf(ElementDoseNotExistException.class);
+                .isInstanceOf(ElementDoesNotExistException.class);
     }
 
     @Test

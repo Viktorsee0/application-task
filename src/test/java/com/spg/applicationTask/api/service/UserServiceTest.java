@@ -6,7 +6,7 @@ import com.spg.applicationTask.api.mapper.UserMapper;
 import com.spg.applicationTask.api.model.User;
 import com.spg.applicationTask.api.repository.UserRepository;
 import com.spg.applicationTask.engine.IoC.Application;
-import com.spg.applicationTask.engine.web.exception.ElementDoseNotExistException;
+import com.spg.applicationTask.engine.web.exception.ElementDoesNotExistException;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -52,7 +52,7 @@ public class UserServiceTest {
     void geUser() {
         doReturn(Optional.empty()).when(repository).getById(1);
         assertThatThrownBy(() -> service.getUser(1))
-                .isInstanceOf(ElementDoseNotExistException.class);
+                .isInstanceOf(ElementDoesNotExistException.class);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class UserServiceTest {
     void getUserIfThrow() {
         doReturn(Optional.empty()).when(repository).getById(anyInt());
         assertThatThrownBy(() -> service.getUser(1))
-                .isInstanceOf(ElementDoseNotExistException.class);
+                .isInstanceOf(ElementDoesNotExistException.class);
     }
 
     @Test

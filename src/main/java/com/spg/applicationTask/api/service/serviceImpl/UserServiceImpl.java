@@ -8,7 +8,7 @@ import com.spg.applicationTask.api.model.User;
 import com.spg.applicationTask.api.repository.UserRepository;
 import com.spg.applicationTask.api.service.UserService;
 import com.spg.applicationTask.engine.extension.Validator;
-import com.spg.applicationTask.engine.web.exception.ElementDoseNotExistException;
+import com.spg.applicationTask.engine.web.exception.ElementDoesNotExistException;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO getUser(final int id) {
         User user = userRepository.getById(id)
                 .orElseThrow(() ->
-                        new ElementDoseNotExistException(404, EXISTING_USER_ERROR));
+                        new ElementDoesNotExistException(404, EXISTING_USER_ERROR));
         return mapper.toUserDto(user);
     }
 

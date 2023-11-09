@@ -21,6 +21,7 @@
         <reflections.version>0.10.2</reflections.version>
         <log4j-core.version>2.20.0</log4j-core.version>
         <log4j-api.version>2.20.0</log4j-api.version>
+        <HikariCP.version>5.0.1</HikariCP.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
@@ -28,7 +29,7 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>5.0.1</version>
+            <version>${HikariCP.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.annotation</groupId>

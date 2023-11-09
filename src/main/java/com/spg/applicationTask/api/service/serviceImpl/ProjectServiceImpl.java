@@ -8,7 +8,7 @@ import com.spg.applicationTask.api.model.Project;
 import com.spg.applicationTask.api.repository.ProjectRepository;
 import com.spg.applicationTask.api.service.ProjectService;
 import com.spg.applicationTask.engine.extension.Validator;
-import com.spg.applicationTask.engine.web.exception.ElementDoseNotExistException;
+import com.spg.applicationTask.engine.web.exception.ElementDoesNotExistException;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectDTO getProject(final int id) {
         Project project = projectRepository.getProject(id)
                 .orElseThrow(() ->
-                        new ElementDoseNotExistException(404, EXISTING_PROJECT_ERROR));
+                        new ElementDoesNotExistException(404, EXISTING_PROJECT_ERROR));
         return mapper.toProjectDto(project);
     }
 
