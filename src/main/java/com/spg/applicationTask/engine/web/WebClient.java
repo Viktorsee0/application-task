@@ -19,18 +19,34 @@ import java.util.logging.Logger;
 import static com.spg.applicationTask.engine.web.WebConstants.Messages.JSON_ERROR;
 import static java.net.HttpURLConnection.HTTP_BAD_REQUEST;
 
+/**
+ * The internal implementation of the web client.
+ */
 public final class WebClient<T> {
     private final static Logger LOGGER = Logger.getLogger(WebClient.class.getSimpleName());
     private String url;
     private HttpMethod method;
     private String request;
-    private T response;
+    private T content;
     private int rCode;
 
+    /**
+     * Constructs the client based on url and http method.
+     *
+     * @param url an url of a web client.
+     * @param method a method of a web client.
+     */
     public WebClient(String url, HttpMethod method) {
         this(url, method, null);
     }
 
+    /**
+     * Constructs the client based on url, http method and request body.
+     *
+     * @param url an url of a web client.
+     * @param method a method of a web client.
+     * @param request a request body of a web client.
+     */
     public WebClient(String url, HttpMethod method, String request) {
         this.url = url;
         this.method = method;
@@ -43,10 +59,10 @@ public final class WebClient<T> {
                 writeContent(connection);
             }
             if (connection.getResponseCode() > 299) {
-                response = readContent(connection.getErrorStream());
+                content = readContent(connection.getErrorStream());
             } else {
                 if (!Objects.equals(connection.getResponseMessage(), "No Content")) {
-                    response = readContent(connection.getInputStream());
+                    content = readContent(connection.getInputStream());
                 }
             }
             rCode = connection.getResponseCode();
@@ -57,12 +73,22 @@ public final class WebClient<T> {
         }
     }
 
+    /**
+     * Returns a rCode of the response.
+     *
+     * @return the rCode.
+     */
     public int getCode() {
         return rCode;
     }
 
-    public T getResponse() {
-        return response;
+    /**
+     * Returns a content of the response.
+     *
+     * @return the content.
+     */
+    public T getContent() {
+        return content;
     }
 
     private HttpURLConnection openConnection() {

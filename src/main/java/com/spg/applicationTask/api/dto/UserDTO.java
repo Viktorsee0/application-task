@@ -1,6 +1,7 @@
 package com.spg.applicationTask.api.dto;
 
 import com.github.cliftonlabs.json_simple.JsonObject;
+import com.spg.applicationTask.api.model.User;
 import com.spg.applicationTask.engine.extension.ExtJsonable;
 import com.spg.applicationTask.engine.extension.Validator;
 
@@ -10,6 +11,11 @@ import java.io.Writer;
 import static com.spg.applicationTask.api.Constants.Messages.WRONG_ID_VALUE;
 import static com.spg.applicationTask.engine.extension.JsonUtils.getInt;
 
+/**
+ * DTO for user.
+ *
+ * @see User
+ */
 public class UserDTO implements ExtJsonable {
 
     private int id;
@@ -26,26 +32,56 @@ public class UserDTO implements ExtJsonable {
         this.project = builder.project;
     }
 
+    /**
+     * Returns an id of the user.
+     *
+     * @return a user id.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets user id.
+     *
+     * @param id an id of the user.
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Returns a firstname of user.
+     *
+     * @return a user first name.
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Returns a lastname of user.
+     *
+     * @returna a user lastname.
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Returns an email of user.
+     *
+     * @return a user email.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Returns a project dto of user.
+     *
+     * @return a user project dto.
+     */
     public ProjectDTO getProject() {
         return project;
     }
@@ -71,6 +107,11 @@ public class UserDTO implements ExtJsonable {
         public Builder() {
         }
 
+        /**
+         * Constructs a user dto based on the json object.
+         *
+         * @param jsonObject a json object with the user dto.
+         */
         public Builder(final JsonObject jsonObject) {
             final JsonObject prototype = Validator.of(jsonObject).get();
             this.id = getInt(prototype, "id");
@@ -82,6 +123,12 @@ public class UserDTO implements ExtJsonable {
             }
         }
 
+        /**
+         * Constructs a user dto with the id parameter.
+         *
+         * @param id a user dto id.
+         * @return a builder of the user dto.
+         */
         public Builder id(final int id) {
             if (id > 0) {
                 this.id = id;
@@ -91,26 +138,55 @@ public class UserDTO implements ExtJsonable {
             return this;
         }
 
+        /**
+         * Constructs a user dto with the firstName parameter.
+         *
+         * @param firstName a user dto firstName.
+         * @return a builder of the user dto.
+         */
         public Builder firstName(final String firstName) {
             this.firstName = firstName;
             return this;
         }
 
+        /**
+         * Constructs a user dto with the lastName parameter.
+         *
+         * @param lastName a user dto lastName.
+         * @return a builder of the user dto.
+         */
         public Builder lastName(final String lastName) {
             this.lastName = lastName;
             return this;
         }
 
+        /**
+         * Constructs a user dto with the email parameter.
+         *
+         * @param email a user dto email.
+         * @return a builder of the user dto.
+         */
         public Builder email(final String email) {
             this.email = email;
             return this;
         }
 
+        /**
+         * Constructs a user dto with the project parameter.
+         *
+         * @param project a user dto project.
+         * @return a builder of the user dto.
+         */
         public Builder project(final ProjectDTO project) {
             this.project = project;
             return this;
         }
 
+        /**
+         * Builds a user dto with required parameters.
+         *
+         * @return a builder of the user dto.
+         */
         public UserDTO build() {
             return new UserDTO(this);
         }

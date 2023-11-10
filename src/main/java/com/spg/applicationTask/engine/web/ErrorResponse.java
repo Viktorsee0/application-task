@@ -11,7 +11,7 @@ import java.io.Writer;
 import static com.spg.applicationTask.engine.web.WebConstants.Messages.STRING_TO_JSON_ERROR;
 
 /**
- * The operation response model that contains a result, an error message and a flag of success.
+ * The error response model that contains an error message and a code of error.
  */
 public final class ErrorResponse implements Jsonable {
 
@@ -21,24 +21,6 @@ public final class ErrorResponse implements Jsonable {
     private ErrorResponse(final Builder builder) {
         this.rCode = builder.rCode;
         this.message = builder.message;
-    }
-
-    /**
-     * Returns an error message.
-     *
-     * @return an operation response error.
-     */
-    public String getError() {
-        return message;
-    }
-
-    /**
-     * Returns a result of the request.
-     *
-     * @return an operation response result.
-     */
-    public int getCode() {
-        return rCode;
     }
 
     @Override
@@ -66,16 +48,33 @@ public final class ErrorResponse implements Jsonable {
         private int rCode;
         private String message;
 
+        /**
+         * Constructs am error response model with the message parameter.
+         *
+         * @param message an error response message.
+         * @return a builder of the error response model.
+         */
         public Builder message(final String message) {
             this.message = Validator.of(message).get();
             return this;
         }
 
+        /**
+         * Constructs am error response model with the rCode parameter.
+         *
+         * @param rCode an error response rCode.
+         * @return a builder of the error response model.
+         */
         Builder error(final int rCode) {
             this.rCode = Validator.of(rCode).get();
             return this;
         }
 
+        /**
+         * Builds an error response model with required parameters.
+         *
+         * @return a builder of the error response model.
+         */
         public ErrorResponse build() {
             return new ErrorResponse(this);
         }

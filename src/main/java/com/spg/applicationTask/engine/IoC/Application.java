@@ -1,10 +1,15 @@
 package com.spg.applicationTask.engine.IoC;
 
-
+/**
+ * Provides methods for starting application context
+ */
 public class Application {
 
     private static ApplicationContext context;
 
+    /**
+     * Creates application context
+     */
     public static ApplicationContext run(Class<?> primarySource) {
         JavaConfig config = new JavaConfig(primarySource);
         ApplicationContext applicationContext = new ApplicationContext(config);
@@ -17,11 +22,20 @@ public class Application {
         return context;
     }
 
+    /**
+     * Returns context
+     *
+     * @return context an application context
+     */
     public static ApplicationContext getContext() {
         return context;
     }
 
-    private static Package getPackage(Class<?> primarySource) {
-        return primarySource.getPackage();
+    /**
+     * Cleans application context
+     */
+    public static void clean() {
+        context.clean();
     }
+
 }

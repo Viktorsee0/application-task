@@ -7,6 +7,11 @@ import java.io.StringWriter;
 
 import static com.spg.applicationTask.engine.web.WebConstants.Messages.STRING_TO_JSON_ERROR;
 
+/**
+ * Extends the basic interface of <code>Jsonable</code>.
+ *
+ * @see Jsonable for more information.
+ */
 public interface ExtJsonable extends Jsonable {
 
     /**

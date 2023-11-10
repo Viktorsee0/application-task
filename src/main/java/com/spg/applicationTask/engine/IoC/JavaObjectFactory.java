@@ -12,7 +12,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
+/**
+ * This factory creates objects by annotations
+ */
 public class JavaObjectFactory {
     private final List<PostConstructObjectConfigurator> configurators = new ArrayList<>();
     private final Set<Class<?>> configClasses;
@@ -32,6 +34,9 @@ public class JavaObjectFactory {
         }
     }
 
+    /**
+     * Creates components and put it to context
+     */
     void create() {
         try {
             Map<Class, Object> result = new HashMap<>();
@@ -47,6 +52,16 @@ public class JavaObjectFactory {
         }
     }
 
+    /**
+     * Returns an instance of the passed class
+     *
+     * @param aClass an instance which will be returned
+     * @return an instance of aClass
+     * @throws NoSuchMethodException     when a reflection some problem
+     * @throws InvocationTargetException when a reflection some problem
+     * @throws InstantiationException    when a reflection some problem
+     * @throws IllegalAccessException    when a reflection some problem
+     */
     private <T> T createInstance(final Class<T> aClass) throws NoSuchMethodException,
             InvocationTargetException, InstantiationException, IllegalAccessException {
         return aClass.getDeclaredConstructor().newInstance();

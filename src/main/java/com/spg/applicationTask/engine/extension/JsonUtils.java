@@ -20,6 +20,12 @@ public final class JsonUtils {
         return value != null ? ((BigDecimal) value).intValue() : 0;
     }
 
+    /**
+     * Returns a value of the parameter name.
+     *
+     * @param t a list of objects that extend Jsonable.
+     * @return a string value as json list.
+     */
     public static <T extends Jsonable> String toJson(List<T> t) {
         StringBuilder jsonResponse = new StringBuilder("[");
         t.forEach(r -> {

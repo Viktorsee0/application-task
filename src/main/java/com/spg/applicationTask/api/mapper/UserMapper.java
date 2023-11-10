@@ -8,12 +8,21 @@ import com.spg.applicationTask.engine.IoC.annotation.Inject;
 
 import java.util.List;
 
+/**
+ * Provides method for mapping user to dto and dto to user
+ */
 @Component
 public class UserMapper {
 
     @Inject
     private ProjectMapper mapper;
 
+    /**
+     * Maps the user dto with the user
+     *
+     * @param dto a user dto
+     * @return user
+     */
     public User toUser(final UserDTO dto) {
         return new User.Builder()
                 .id(dto.getId())
@@ -25,6 +34,12 @@ public class UserMapper {
                 .build();
     }
 
+    /**
+     * Maps the assignee dto with the user
+     *
+     * @param dto a assignee dto
+     * @return user
+     */
     public User toUser(final AssigneeDTO dto) {
         return new User.Builder()
                 .id(dto.getId())
@@ -34,14 +49,32 @@ public class UserMapper {
                 .build();
     }
 
+    /**
+     * Maps the list of user dto with the list of user
+     *
+     * @param dto a user dto
+     * @return user
+     */
     public List<User> toUser(final List<UserDTO> dto) {
         return dto.stream().map(this::toUser).toList();
     }
 
+    /**
+     * Maps the list of user with the list of user dto
+     *
+     * @param users a user
+     * @return user dto
+     */
     public List<UserDTO> toUserDto(final List<User> users) {
         return users.stream().map(this::toUserDto).toList();
     }
 
+    /**
+     * Maps the user with the user dto
+     *
+     * @param user a user
+     * @return user dto
+     */
     public UserDTO toUserDto(final User user) {
         return new UserDTO.Builder()
                 .id(user.getId())
@@ -53,6 +86,12 @@ public class UserMapper {
                 .build();
     }
 
+    /**
+     * Maps the user with the assignee dto
+     *
+     * @param user a user
+     * @return assignee dto
+     */
     public AssigneeDTO toAssigneeDto(final User user) {
         return new AssigneeDTO.Builder()
                 .id(user.getId())

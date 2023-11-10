@@ -18,6 +18,9 @@ import static com.spg.applicationTask.engine.web.Server.Settings.PORT_VALUE;
 import static com.spg.applicationTask.engine.web.WebConstants.Messages.SERVER_STARTED;
 import static com.spg.applicationTask.engine.web.WebConstants.Messages.SERVER_STOPPED;
 
+/**
+ * The internal implementation of the web server.
+ */
 public final class Server implements WebServer {
 
     private final static Logger LOGGER = Logger.getLogger(Server.class.getSimpleName());
@@ -25,6 +28,12 @@ public final class Server implements WebServer {
     @Inject
     private ServerConfig config;
 
+    /**
+     * Configure httpServer by config after initialization.
+     *
+     * @see HttpServer
+     * @see ServerConfig
+     */
     @PostConstruct
     public void postConstruct() {
         String host = config.getProperty(Property.HOST)
@@ -64,6 +73,9 @@ public final class Server implements WebServer {
         this.server.setExecutor(Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()));
     }
 
+    /**
+     * Settings constants for the web server.
+     */
     public final static class Settings {
 
         private Settings() {
@@ -74,5 +86,4 @@ public final class Server implements WebServer {
         static final int PORT_VALUE = 8000;
         static final int BACKLOG_VALUE = 0;
     }
-
 }

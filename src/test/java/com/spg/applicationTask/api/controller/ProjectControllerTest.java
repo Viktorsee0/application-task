@@ -134,7 +134,7 @@ public class ProjectControllerTest {
     @Test
     void getAllProject() {
         client = new WebClient<JsonArray>("http://localhost:8000/project", GET);
-        List<ProjectDTO> response = ((JsonArray) client.getResponse()).stream()
+        List<ProjectDTO> response = ((JsonArray) client.getContent()).stream()
                 .map(json -> new ProjectDTO.Builder((JsonObject) json).build())
                 .toList();
 
@@ -148,7 +148,7 @@ public class ProjectControllerTest {
     @Test
     void getProject() {
         client = new WebClient<JsonArray>("http://localhost:8000/project?id=1", GET);
-        ProjectDTO response = new ProjectDTO.Builder(((JsonObject) client.getResponse())).build();
+        ProjectDTO response = new ProjectDTO.Builder(((JsonObject) client.getContent())).build();
 
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(mapper.toProject(response)).isEqualTo(expectedProject);

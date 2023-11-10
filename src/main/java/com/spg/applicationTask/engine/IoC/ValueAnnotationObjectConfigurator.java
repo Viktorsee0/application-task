@@ -11,10 +11,18 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.toMap;
 
+/**
+ * Class for injecting property from property file into components annotated as @value
+ *
+ * @see Value
+ */
 final class ValueAnnotationObjectConfigurator implements PostConstructObjectConfigurator {
 
     private Map<String, String> properties;
 
+    /**
+     * Constructs ValueAnnotationObjectConfigurator, reads the properties file and add them to the cache
+     */
     public ValueAnnotationObjectConfigurator() {
         try {
             try (InputStream inputStream = getClass().getResourceAsStream("/application.properties");

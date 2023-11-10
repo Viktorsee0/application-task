@@ -10,11 +10,9 @@ import com.spg.applicationTask.engine.web.Server;
 
 import java.util.Scanner;
 
-
 public class Main {
 
     public static void main(String[] args) {
-
         ApplicationContext context = Application.run(Main.class);
 
         Server server = context.getObject(Server.class);
@@ -24,13 +22,13 @@ public class Main {
 
         server.addControllers(projectController, userController, taskController);
         server.start();
-
         System.out.println("To terminate the program press: q/Q ");
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
             if ("q".equalsIgnoreCase(scanner.next())) {
                 System.out.print("Termination of the program...");
                 server.stop();
+                Application.clean();
                 return;
             } else {
                 System.out.print("To terminate the program press: q/Q: ");

@@ -6,6 +6,7 @@ import com.spg.applicationTask.engine.IoC.ApplicationContext;
 import com.spg.applicationTask.engine.web.ServerConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -19,6 +20,7 @@ import static com.spg.applicationTask.api.TestContainer.InitDB.insertDb;
 import static com.spg.applicationTask.engine.web.ServerConfig.Property.HOST;
 import static com.spg.applicationTask.engine.web.ServerConfig.Property.PORT;
 
+@Testcontainers
 public class TestContainer extends PostgreSQLContainer<TestContainer> {
 
     private static TestContainer container;

@@ -113,7 +113,7 @@ public class UserControllerTest {
     @Test
     void getAllUsers() {
         client = new WebClient<JsonArray>("http://localhost:8000/user", GET);
-        List<UserDTO> response = ((JsonArray) client.getResponse()).stream()
+        List<UserDTO> response = ((JsonArray) client.getContent()).stream()
                 .map(json -> new UserDTO.Builder((JsonObject) json).build())
                 .toList();
         SoftAssertions softAssertions = new SoftAssertions();
@@ -125,7 +125,7 @@ public class UserControllerTest {
     @Test
     void getUser() {
         client = new WebClient<JsonArray>("http://localhost:8000/user?id=1", GET);
-        UserDTO response = new UserDTO.Builder(((JsonObject) client.getResponse())).build();
+        UserDTO response = new UserDTO.Builder(((JsonObject) client.getContent())).build();
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(mapper.toUser(response)).isEqualTo(expectedUser);
         softAssertions.assertThat(client.getCode()).isEqualTo(200);

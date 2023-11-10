@@ -150,7 +150,7 @@ public abstract class AbstractController {
      * @see HttpExchange for more information.
      */
     protected <T extends Jsonable> void writeResponse(final HttpExchange httpExchange,
-                                                      final T response)  {
+                                                      final T response) {
         try {
             httpExchange.getResponseHeaders().put("Content-Type", Collections.singletonList(APPLICATION_JSON));
             StringBuilder jsonResponse = new StringBuilder();
@@ -214,16 +214,21 @@ public abstract class AbstractController {
         }
     }
 
-    protected Optional<String> getPath(final URI uri) {
-        final String query = uri.getPath();
-        return query != null ? Optional.of(query) : Optional.empty();
-    }
-
-    public String getApiPath(){
+    /**
+     * Returns an apiPath of the controller.
+     *
+     * @return an apiPath.
+     */
+    public String getApiPath() {
         return apiPath;
     }
 
-    public void setApiPath(String apiPath){
+    /**
+     * Sets an apiPath of the controller.
+     *
+     * @param apiPath a controller apiPath.
+     */
+    public void setApiPath(String apiPath) {
         this.apiPath = apiPath;
     }
 

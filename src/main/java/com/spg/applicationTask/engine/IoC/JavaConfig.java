@@ -7,11 +7,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Implementation of config
+ *
+ * @see Config
+ */
 final class JavaConfig implements Config {
 
     private final Reflections scanner;
+
+    /**
+     * Cache of classes that have already been checked for implementation
+     */
     private final Map<Class, Class> ifc2ImplClass;
 
+    /**
+     * Constructs java config by primary source
+     *
+     * @param primarySource a main class
+     */
     public JavaConfig(Class<?> primarySource) {
         this.scanner = new Reflections(new ConfigurationBuilder().forPackages(primarySource.getPackageName()));
         this.ifc2ImplClass = new HashMap<>();

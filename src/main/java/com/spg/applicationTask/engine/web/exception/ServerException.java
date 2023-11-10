@@ -9,7 +9,7 @@ public class ServerException extends RuntimeException {
     /**
      * Constructs an exception with a code and a message.
      *
-     * @param code a code.
+     * @param code    a code.
      * @param message a message.
      */
     ServerException(final int code, final String message) {

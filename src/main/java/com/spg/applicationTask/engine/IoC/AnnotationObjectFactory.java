@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Class for creating, configuring, injecting and adding objects to application context
+ */
 final class AnnotationObjectFactory {
 
     private List<AnnotationObjectScanner> objectScanners = new ArrayList<>();
@@ -22,6 +25,11 @@ final class AnnotationObjectFactory {
     private Set<Class<?>> componentClasses;
     private final ApplicationContext context;
 
+    /**
+     * Constructs the AnnotationObjectFactory based on application context.
+     *
+     * @param context an ApplicationContext of app.
+     */
     AnnotationObjectFactory(final ApplicationContext context) {
         this.context = context;
         Reflections scanner = context.getConfig().getScanner();
@@ -42,6 +50,10 @@ final class AnnotationObjectFactory {
         }
     }
 
+    /**
+     * The method scans all components, creates, configures them, injects dependencies
+     * and put them in the application context
+     */
     void create() {
         try {
             Map<Class, Object> result = new HashMap<>();
@@ -67,6 +79,12 @@ final class AnnotationObjectFactory {
         }
     }
 
+    /**
+     * The method scans component, creates, configures it,
+     * injects dependencies and return this component
+     *
+     * @return component as Map<Class, Object> where class is its interface and object is an instance
+     */
     <T> Map<Class, Object> create(final Class<T> aClass) {
         try {
             Map<Class, Object> result = new HashMap<>();
@@ -81,6 +99,22 @@ final class AnnotationObjectFactory {
 
     }
 
+    /**
+     * The method configures component, injects dependencies and properties
+     *
+     * @param aClass   a class of configurable object
+     * @param instance an instance of configurable object
+     */
+    <T> void configure(final Class<?> aClass, final Object instance) {
+        try {
+            injectProperties(instance);
+            injectDependencies(instance);
+            invokeInit(aClass, instance);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private Set<Class<?>> scan() {
         Set<Class<?>> scannedClasses = new HashSet<>();
         objectScanners.forEach(s -> {
@@ -93,16 +127,6 @@ final class AnnotationObjectFactory {
     private <T> T createInstance(final Class<T> aClass) throws NoSuchMethodException,
             InvocationTargetException, InstantiationException, IllegalAccessException {
         return aClass.getDeclaredConstructor().newInstance();
-    }
-
-    <T> void configure(final Class<?> aClass, final Object instance) {
-        try {
-            injectProperties(instance);
-            injectDependencies(instance);
-            invokeInit(aClass, instance);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private <T> void injectProperties(final T t) {

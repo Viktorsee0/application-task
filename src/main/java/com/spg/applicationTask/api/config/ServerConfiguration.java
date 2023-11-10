@@ -6,7 +6,9 @@ import com.spg.applicationTask.engine.IoC.annotation.Value;
 import com.spg.applicationTask.engine.web.ServerConfig;
 import com.spg.applicationTask.engine.web.ServerConfig.Property;
 
-
+/**
+ * The configuration class for server.
+ */
 @Configuration
 public class ServerConfiguration {
 
@@ -15,6 +17,11 @@ public class ServerConfiguration {
     @Value("port")
     private String port;
 
+    /**
+     * Returns a configuration of server.
+     *
+     * @Return a serverConfig.
+     */
     @ComponentFactory
     public ServerConfig getServerConfig() {
         return new ServerConfig.Builder()

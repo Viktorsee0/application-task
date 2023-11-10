@@ -7,8 +7,11 @@ import com.zaxxer.hikari.HikariDataSource;
 
 import javax.sql.DataSource;
 
+/**
+ * The configuration class for Data Base.
+ */
 @Configuration
-public class BDConfiguration {
+public class DBConfiguration {
 
     @Value("db.url")
     private String jdbcUrl;
@@ -19,6 +22,11 @@ public class BDConfiguration {
     @Value("db.sqlDriver")
     private String driverClass;
 
+    /**
+     * Returns a connection pool to DB.
+     *
+     * @Return a dataSource.
+     */
     @ComponentFactory
     public DataSource getDataSource() {
         final HikariDataSource dataSource = new HikariDataSource();

@@ -6,7 +6,13 @@ import org.reflections.Reflections;
 
 import java.util.Set;
 
-public class RestControllerAnnotationScannerAndConfigurator implements PostConstructObjectConfigurator, AnnotationObjectScanner {
+/**
+ * An object scanner that discovers candidates specified as a REST controller to create and customize
+ *
+ * @see PostConstructObjectConfigurator
+ * @see AnnotationObjectScanner
+ */
+public final class RestControllerAnnotationScannerAndConfigurator implements PostConstructObjectConfigurator, AnnotationObjectScanner {
 
     @Override
     public void configure(Object t) {

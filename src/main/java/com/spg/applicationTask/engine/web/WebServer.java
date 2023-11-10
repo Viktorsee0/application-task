@@ -20,5 +20,6 @@ public interface WebServer {
     /**
      * Adds controllers
      */
+
     void addControllers(AbstractController... controllers);
 }
